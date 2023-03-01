@@ -3,7 +3,7 @@ import NavBar from './NavBar'
 
 function Layout({children}) {
   return (
-    <div>
+    <div className='container'>
         <NavBar/>
         {children}
     </div>

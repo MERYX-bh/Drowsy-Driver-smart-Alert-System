@@ -2,10 +2,20 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCartShopping, faUser} from '@fortawesome/free-solid-svg-icons'
 import Link from "next/link"
-
-
+import { useRouter } from 'next/router'
 
 function NavBar() {
+  const router = useRouter()
+  const isActive = (r) => {
+    if(r === router.pathname)
+    {
+      return " active"
+    }
+    else
+    {
+      return ""
+    }
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
   <Link href="/">
@@ -16,15 +26,17 @@ function NavBar() {
   </button>
   <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
     <ul className="navbar-nav">
-      <li className="nav-item active">
+      <li className="nav-item">
         <Link href="/cart">
-        <span className="nav-link"><FontAwesomeIcon icon={faCartShopping} /> Cart</span>
+          <span className={"nav-link" + isActive('/cart')}>
+          <FontAwesomeIcon icon={faCartShopping} /> Cart</span>
         </Link>
       </li>
 
-      <li className="nav-item active">
+      <li className="nav-item">
         <Link href="/signin">
-        <span className="nav-link"><FontAwesomeIcon icon={faUser} /> Sign in</span>
+          <span className={"nav-link" + isActive('/signin')}>
+          <FontAwesomeIcon icon={faUser} /> Sign in</span>
         </Link>
       </li>
       

@@ -4,7 +4,7 @@ import Toast from "./Toast";
 
 const Loading = () => {
   return (
-    <div>Loading</div>
+    <div>Loading...</div>
   )
 }
 

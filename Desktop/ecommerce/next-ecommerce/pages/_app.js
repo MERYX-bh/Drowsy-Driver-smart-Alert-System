@@ -1,4 +1,5 @@
 import Layout from '@/components/Layout'
+import '../styles/globals.css'
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { DataProvider } from '../Store/GlobalState';

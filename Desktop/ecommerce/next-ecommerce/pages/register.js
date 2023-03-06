@@ -1,8 +1,9 @@
 import React from 'react'
-import { useState, useContext } from 'react'
+import { useState, useContext,useEffect } from 'react'
 import valid from '../utils/valid'
 import { DataContext } from '@/Store/GlobalState'
 import { postData } from '@/utils/fetchData'
+import {useRouter} from 'next/router'
 
 const register = () => {
   const initialState = {
@@ -11,6 +12,7 @@ const register = () => {
     password: '',
     cf_password: ''
   }
+  const router = useRouter()
 
   const [userData ,setUserData] = useState(initialState)
   const {name, email, password, cf_password} = userData
@@ -36,6 +38,11 @@ const register = () => {
     return dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
     
   }
+   // Quand il se connecte il l'envoie vers la page d'acceuil
+   useEffect(() => {
+    if(Object.keys(auth).length !== 0) router.push("/")
+  }, [auth])
+  
 
   return (
   <section className="vh-100">

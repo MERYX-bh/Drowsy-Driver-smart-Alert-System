@@ -13,7 +13,7 @@ const login = async (req, res) => {
         if(!user) return res.status(400).json({err: 'This user doesnt exist.'})
 
         const ismatch = await bcrypt.compare(password, user.password)
-        if(!ismatch) return res.status(400).json({err: 'This password doesnt match.'})
+        if(!ismatch) return res.status(400).json({err: 'This password does not match.'})
 
         const access_token = createAccessToken({id: user._id})
         const refresh_token = createRefreshToken({id: user._id})
@@ -30,7 +30,6 @@ const login = async (req, res) => {
                 root: user.root
             }
         })
-
     }catch(err){
         return res.status(500).json({err: err.message})
     }

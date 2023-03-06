@@ -1,7 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { DataContext } from '@/Store/GlobalState'
 import { postData } from '@/utils/fetchData'
 import Cookie from 'js-cookie'
@@ -28,6 +28,7 @@ const signin = () => {
     dispatch({type: 'NOTIFY', payload: {}})
   }
 
+  // Handle submit: what happened when we submit
   const handleSubmit = async e => {
     e.preventDefault()
     dispatch({ type: 'NOTIFY', payload: {loading: true} })
@@ -46,9 +47,14 @@ const signin = () => {
       expires: 7
     })
     localStorage.setItem("firstLogin", true)
-
   }
+
+  // Quand il se connecte il l'envoie vers la page d'acceuil
+  useEffect(() => {
+    if(Object.keys(auth).length !== 0) router.push("/")
+  }, [auth])
   
+
   return (
     <div>
       <Head>

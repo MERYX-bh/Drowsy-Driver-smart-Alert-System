@@ -1,3 +1,4 @@
+// Pour générer les tokens
 import jwt from "jsonwebtoken"
 
 export const createAccessToken = (payload) => {

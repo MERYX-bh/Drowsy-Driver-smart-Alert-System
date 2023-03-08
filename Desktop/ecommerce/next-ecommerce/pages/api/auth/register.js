@@ -3,7 +3,6 @@ import Users from '../../../models/userModel'
 import valid from '../../../utils/valid'
 import bcrypt from 'bcrypt'
 
-
 connectDB()
 
 const register = async (req, res) => {
